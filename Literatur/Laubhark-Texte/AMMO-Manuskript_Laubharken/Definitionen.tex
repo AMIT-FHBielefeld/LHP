@@ -1,0 +1,619 @@
+%% Documentation des KOMA-Skriptes
+%% http://www.rrzn.uni-hannover.de/fileadmin/kurse/material/latex/scrguide.pdf
+
+	\newcommand{\version}{V 0.6.3 - 6.11.2013 - Derdau/Hecht }
+
+%0.2  Stichwortverzeichnis geändert
+%     vor \printindex noch einzufügen:
+%    \renewcommand{\indexname}{Stichwortverzeichnis}
+%	
+%	  Hyperref zugefügt
+
+%0.3  Kurzformen für N,Z,Q,R,C,F 
+%0.4  Maple-Programmcode hinzugefügt
+%     Zahlenstrahlrealisierung 
+%     defienum hinzugefügt
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Einbinden weiterer Pakete für Deutsch
+  	\usepackage[ngerman]{babel}               % entsprechend fuer die neue Rechtschreibung
+  	\usepackage[T1]{fontenc}                     % Sonderzeichen
+	\usepackage[utf8]{inputenc} 		%falls Sie Umlaute in den Quellen verwenden wollen
+	\usepackage{lmodern}
+	%\usepackage[tracking=true]{microtype}
+	%\usepackage{txfonts}
+	%\usepackage{pxfonts}
+	%\usepackage{dsfont}
+	
+% IFTHEN wird für eigene Anpassungen an Figure und table benötigt
+	\usepackage{ifthen}
+	%\allowdisplaybreaks
+
+%%% PAGE DIMENSIONS
+	\usepackage{geometry} % to change the page dimensions
+ 	\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{left=2.625cm,right=1.95cm,top=1.5cm,bottom=3.6cm,includehead}
+ 	 %\geometry{margin=0.8in} % for example, change the margins to 2 inches all round 
+	 % \geometry{landscape} % set up the page for landscape 
+	%   read geometry.pdf for detailed page layout information
+
+          % Activate to begin paragraphs with an empty line rather than an indent
+          % \usepackage[parfill]{parskip}
+	% Alternativ 1.Zeile eines Absatzes nicht eingerückt
+ 	\parindent0cm 
+
+           %Zeilenabstände: 
+           \linespread {1.25}\selectfont %1.25 da er von Haus aus 1.2 ist und 1,25 * 1,2 = 1,5 ist
+
+           %Bildunterschriften: 
+           \addtokomafont{caption}{\small} %KOMA Syntax
+
+\setlength{\headheight}{2\baselineskip}
+
+
+
+%%% Nuetzliche Pakete
+ 	\usepackage{booktabs} % for much better looking tables
+	\usepackage{array} % for better arrays (eg matrices) in maths
+ 	\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+	\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+ 	\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+    %\usepackage[bookmarks,bookmarksnumbered=TRUE]{hyperref} % Erstellt Hyperreferenzen im PDF-Dokument
+    %\usepackage[bookmarks,bookmarksnumbered=TRUE,hidelinks]{hyperref}
+    % Versteckt den roten Rahmen
+ 	% These packages are all incorporated in the memoir class to one degree or another...
+%\usepackage{showframe}
+
+%%% AMS-Pakete
+	% enthaelt nuetzliche Makros fuer Mathematik
+	\usepackage{amsmath}
+	% fuer Saetze, Definitionen, Beweise, etc.
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{xfrac}
+	
+	
+	
+%Timo
+%\usepackage[mathrmOrig]{sfmath} % Option auf Keine Kursive Mathe Schrift
+
+
+
+%%% Deklaration eigener Satz-/Definitions-/Beweisumgebungen mit amsthm
+% ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf
+ %http://matheplanet.com/default3.html?call=viewtopic.php?topic=139377&ref=http%3A%2F%2Fwww.google.com%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%2522Deklaration%2Beigener%2BSatz-%252FDefinitions-%252FBeweisumgebungen%2Bmit%2Bamsthm%2522%26source%3Dweb%26cd%3D7%26ved%3D0CEgQFjAG
+  	\theoremstyle{definition}
+  	
+  	%21. November
+\newboolean{schatten}
+\setboolean{schatten}{true} %Schaltet den Schatten ein/aus
+\usepackage{shadethm}
+%\if \boolean{boolvar}{
+
+\usepackage{mdframed}
+
+
+\ifthenelse{\boolean{schatten}}{
+	\newshadetheorem{satz}{Satz}[section]
+  	\newshadetheorem{theorem}[satz]{Theorem}
+  	\newshadetheorem{hilfs}[satz]{Hilfssatz}
+  	\newshadetheorem{lemma}[satz]{Lemma}
+  	\newshadetheorem{korollar}[satz]{Korollar}
+  	\newshadetheorem{proposition}[satz]{Proposition}
+  	\newmdtheoremenv[backgroundcolor =black!25!white, linecolor = white, innerleftmargin=0.25cm,innerrightmargin=0.25cm,innertopmargin = 0.05cm,innerbottommargin = 0.25cm,everyline=true]{defi}[satz]{Definition}
+  	\newshadetheorem{folg}[satz]{Folgerung}
+  	\newshadetheorem{erin}[satz]{Erinnerung}
+  	\newshadetheorem{verein}[satz]{Vereinbarung}
+}{
+	\newtheorem{satz}{Satz}[section]
+  	\newtheorem{theorem}[satz]{Theorem}
+  	\newtheorem{hilfs}[satz]{Hilfssatz}
+  	\newtheorem{lemma}[satz]{Lemma}
+  	\newtheorem{korollar}[satz]{Korollar}
+  	\newtheorem{proposition}[satz]{Proposition}
+  	\newmdtheoremenv[linecolor = white,everyline=true]{defi}[satz]{Definition}
+  	\newtheorem{folg}[satz]{Folgerung}
+  	\newtheorem{erin}[satz]{Erinnerung}
+  	\newtheorem{verein}[satz]{Vereinbarung}
+}
+
+
+  	\newtheorem{bem}[satz]{Bemerkung}
+  	\newtheorem{bsp}[satz]{Beispiel}
+  	\newtheorem*{bsp_on}{Beispiel} % Ohne Nummerierung
+  	\newtheorem*{bem_on}{Bemerkung} % Ohne Nummerierung
+ 	\newtheorem*{bsp_eng}{Example} % Ohne Nummerierung
+  	\newtheorem{satz+def}[satz]{Satz und Definition}
+  	\newtheorem{def+lem}[satz]{Definition und Lemma}
+  	\newtheorem{war}[satz]{Warnung}
+  	%\newtheorem{algo}[satz]{Algorithmus}
+	%\newmdtheoremenv[frametitle={blabla},frametitlerule=true,frametitlebackgroundcolor=gray!20,linecolor=black,linewidth=2pt]{algo}[satz]{Algorithmus}
+\mdtheorem[frametitlerule=true,frametitlebackgroundcolor=blue!30,linecolor=black,linewidth=2pt]{algo}[satz]{Algorithmus}
+  	\newtheorem{bembsp}[satz]{Bemerkung und Beispiel}
+  	\newtheorem{bez}[satz]{Bezeichnung}
+
+
+
+	\newenvironment{loesung}{\begin{proof}[Lösung]}{\end{proof}}
+
+	\newenvironment{aufgabe}{\vskip
+	0.5cm\begin{minipage}[l]{14.7cm}\begin{satz}[Aufgabe]\vskip
+	0.1cm}{\end{satz}\end{minipage}}
+
+  	\newenvironment{beweis}%
+    		{\begin{proof}[Beweis]}
+    		{\end{proof}}
+  	\newtheorem{beispiel}[satz]{Beispiel}
+    \newenvironment{KommentarBB}%
+    		{\begin{proof}[\colorbox{red}{Hinweis:}]}
+    		{\end{proof}}
+    \newenvironment{KommentarAH}%
+    		{\begin{proof}[\colorbox{green}{Hinweis:}]}
+    		{\end{proof}}
+ 
+ 	% Um einen Doppelpunkt oder einen Zeilenumbruch hinter der Nummer der Definition zu implementieren
+ 	 \makeatletter
+  		\g@addto@macro\thm@space@setup{\thm@headpunct{:\\}}
+  	\makeatother
+
+    \newenvironment{defienum}[1][1.]{~\vspace*{-\baselineskip}\begin{enumerate}[#1]}{\end{enumerate}}
+
+%%% EPS-Grafiken einbinden
+	\usepackage{graphicx}
+	\usepackage{epstopdf}
+
+\usepackage {picins}
+
+%%% Eigene Umgebung für Bilder, die nicht gleiten sollen
+	\newenvironment{myfigure}{\begin{minipage}{\textwidth}\vspace*{6pt}\normalfont}{\end{minipage}\vspace*{10pt}}
+
+	\newcommand{\mycaption}[1]{\refstepcounter{figure}%
+	  \setbox0=\hbox{\small \textbf{ Abb. \thefigure} #1}%
+	  \ifthenelse{\wd0 > \linewidth}%
+	  {\begin{minipage}{\textwidth}\vspace*{10pt}\small \textbf{Abb. \thefigure.} #1\end{minipage}}%
+	  {\begin{center}\small \textbf{Abb. \thefigure.} #1\end{center}}
+	\addcontentsline{lof}{figure}{\numberline{\thefigure}{\ignorespaces #1} } }
+
+
+%%% Eigene Umgebung für Tabellen, die nicht gleiten sollen
+	\newenvironment{mytable}{\begin{minipage}{\textwidth}\vspace*{6pt}\normalfont}{\end{minipage}\vspace*{10pt}}
+
+	\newcommand{\mytablecaption}[1]{\refstepcounter{table}%
+	 	\setbox0=\hbox{\small \textbf{Table \thetable:} #1}%
+  		\ifthenelse{\wd0 > \linewidth}%
+  		{\begin{minipage}{\textwidth}\small \textbf{Table \thetable.} #1\end{minipage}}%
+  		{\begin{center}\small \textbf{Table \thetable.} #1\end{center}}
+	\addcontentsline{lot}{table}{\numberline{\thetable}{\ignorespaces #1} } }
+
+%%% Englische Beschriftungen
+
+\DeclareNewTOC[
+  type=engtable,                         % Name der Umgebung
+  types=engtables,                       % Erweiterung (\listofschemes)
+  float,                               % soll gleiten
+  floatpos=tbp,                        % voreingestellte Gleitparameter
+  name=Table,                         % Name in Überschriften
+  %listname={Verzeichnis der Schemata}, % Listenname
+   counterwithin=section
+]{los1}
+
+\DeclareNewTOC[
+  type=engfigure,                         % Name der Umgebung
+  types=engfigures,                       % Erweiterung (\listofschemes)
+  float,                               % soll gleiten
+  floatpos=tbp,                        % voreingestellte Gleitparameter
+  name=Figure,                         % Name in Überschriften
+  %listname={Verzeichnis der Schemata}, % Listenname
+   counterwithin=section
+]{los2}
+
+% Einige Kurzformen 
+\def\N {{\mathbb N}}
+\def\Z {{\mathbb Z}}
+\def\Q {{\mathbb Q}}
+\def\R {{\mathbb R}}
+\def\C {{\mathbb C}}
+\def\F {{\mathbb F}}
+\def\K {{\mathbb K}}
+\def\dx {{\, \mathrm{d}x}}
+\def\dt {{\, \mathrm{d}t}}
+\def\cond {{\mathrm{cond}}}
+\def\eps {{\epsilon_M}}
+
+%Paket für Graphen
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+%Symbol für Widerspruch
+\usepackage{stmaryrd}
+
+
+
+% Nummerierung der Gleichungen kapitel.nummer
+%\def\theequation{\thesection.\arabic{equation}}
+	\def\theequation{\arabic{equation}}
+	\numberwithin{equation}{section}
+
+% Nummerierung der Abbildungen kapitel.nummer
+	%\def\thefigure{\thesection.\arabic{figure}}
+	\def\thefigure{\arabic{figure}}
+	\numberwithin{figure}{section}
+
+% Nummerierung der Tabellen kapitel.section.nummer
+	%\def\thetable{\thesection.\arabic{table}}
+	\def\thetable{\arabic{table}}
+	\numberwithin{table}{section}
+
+%%% HEADERS & FOOTERS
+	\usepackage{scrpage2} % This should be set AFTER setting up the page geometry
+	%\pagestyle{plain} % options:  plain , scrheadings, 
+	\pagestyle{scrheadings}
+          %Kapitelname in Kopfzeile [linke Seite]{rechte Seite}
+          \automark[chapter]{chapter}
+	%Kopfzeile linke Seite
+	\lehead{\headmark} \cehead{}\rehead{}
+
+	%Kopfzeile rechte Seite
+	\lohead{}\cohead{}\rohead{\headmark}
+
+	%Fußzeile linke Seite
+	\lefoot[\thepage]{\thepage}\cefoot{}\refoot{}
+	%Fußzeile rechte Seite
+          \lofoot{}\cofoot{}\rofoot[\thepage]{\thepage}
+%\renewcommand{\chapterpagestyle}{scrheadings}
+%%% Einrichten eines Index
+	\usepackage{makeidx}
+	%\makeindex
+	\newcommand{\rdi}[1]{{\bfseries #1}\index{#1}}
+    \newcommand{\rdii}[2]{{\bfseries #2}\index{#1!#2}}
+
+ %% Aufruf von makeindex mit dem Parameter -s mkidx.ist
+
+
+% Umbenennung der Überschrift für die abstract-Umgebenung
+
+
+%%% SECTION TITLE APPEARANCE
+	\usepackage{sectsty}
+	\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+
+%%% ToC (table of contents) APPEARANCE
+	%\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+	\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+	\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+	\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% Überschriften anpassen
+%\usepackage{titlesec} \titleformat{\chapter}{\bf\Huge\center}{\thechapter\quad}{0em}{}
+%\usepackage{titlesec} \titleformat{\section}{\bf\Huge}{\thesection\quad}{0em}{}
+\renewcommand*{\chapterformat}{}
+\renewcommand*{\chaptermarkformat}{}
+\let\originaladdchaptertocentry\addchaptertocentry
+\renewcommand*{\addchaptertocentry}[2]{%
+\originaladdchaptertocentry{}{#2}%
+}
+\renewcommand*{\thesection}{\arabic{section}}
+
+%%% Chapterüberschrift zentrieren
+%\renewcommand*{\raggedsection}{\centering}
+
+%%% Section ohne Punkte
+\usepackage{titletoc} % Inhaltsverzeichnis anpassen
+\titlecontents{section}[3.7em]{}{\contentslabel{2.2em}}{}{\titlerule*[0.3pc]{ }\contentspage}
+
+%%% Titel des Dokumentes
+
+	\title{Brief Article}
+	\author{The Author\thanks{FH Bielefeld - Angewandte Mathematik}}
+	%\date{} % Activate to display a given date or no date (if empty),
+                % otherwise the current date is printed 
+
+%%% TESTBEREICH
+%% Version 1
+
+\usepackage{xcolor}
+%\usepackage{amsmath}
+\definecolor{MapleRed}{rgb}{1,0.0,0.0}
+\usepackage[]{listings}
+\lstdefinelanguage{maple}
+   {morekeywords={true, false, try, catch, return, break, error,%
+                  module, export, local, option, in, use,add,seq,sum%
+                  and, or, not, xor, xnor,if, then, elif, else, fi,%
+                  while, for, from, by, to, do, od,proc, nargs, %
+                  local, global, end, NULL,with,restart}}
+\lstnewenvironment{lstmapleinput}
+     { \renewcommand*\thelstnumber{$\boldsymbol{>}$\hfill}%
+       \lstset{language=maple,basicstyle=\color{MapleRed}%
+\fontfamily{phv}\selectfont,numbers=left,xleftmargin=3em}%
+     }{}
+
+
+%% Version 2
+%Siehe:
+  %
+   % http://www.mapleprimes.com/questions/37934-Including-Maple-Inputoutput-In-LaTeX
+\definecolor{MapleRed}{rgb}{1,0,0}
+\definecolor{MapleBlue}{rgb}{0,0,1}
+\definecolor{MaplePink}{rgb}{1,0,1} 
+\definecolor{MatlabString}{rgb}{1,0,1} 
+
+\def\MapleInput#1{\noindent{{\small $>$ {\tt \color{MapleRed}{#1} }}}}
+\def\MapleOutput#1{{\begin{center}\begin{math} \color{MapleBlue}{#1}\end{math} \end{center}}}
+\def\MapleWarning#1{\noindent{{\small {\tt \color{MaplePink}{#1} }}}}
+
+\def\MatlabInput#1{\noindent{{{\tt {#1} }}}}
+
+
+%% Definition Zahlenstrahl
+% siehe http://gruppen.niuz.biz/zahlenstrahl-t24578.html
+\usepackage{tikz}
+
+%Algorithmen anzeigen
+\usepackage{alltt}
+
+%Aufzählung
+\usepackage{enumitem}
+
+\usepackage{color}
+
+%\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit
+% Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+ 
+%\newcommand{\il}{\int\limits} %Integral mit Grenzen
+\newcolumntype{L}{>{\labelitemi~~}l<{}}
+
+%Definitionen Bachmann
+\newcommand{\Int}{\ds\int} 
+\newcommand{\Sum}{\ds\sum} 
+\newcommand{\Lim}{\ds\lim}
+\newcommand{\open}{\stackrel{\circ}}
+\renewcommand{\mit}{\;\big|\;}
+
+\newcommand{\ds}{\displaystyle}
+%\newcommand{\bx}{\hfill$\rule{2mm}{2mm}$}
+\newcommand{\pa}{\partial}
+\newcommand{\la}{\lambda}
+\newcommand{\ula}{\ul{\lambda}}
+\newcommand{\halb}{\frac{1}{2}}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\0}{\ul{0}}
+\renewcommand{\a}{\ul{a}}
+\renewcommand{\b}{\ul{b}}
+%\renewcommand{\c}{\ul{c}}
+\renewcommand{\d}{\ul{d}}
+\newcommand{\s}{\ul{s}}
+\newcommand{\x}{\ul{x}}
+\newcommand{\y}{\ul{y}}
+\newcommand{\qq}{\ul{q}}
+%\newcommand{\xAx}{\x^TA\x}
+%\newcommand{\xAix}{\x^TA^{-1}\x}
+%\newcommand{\xx}{\x^T\x}
+%\newcommand{\dxdg}{\Delta \x^T \Delta g}
+%\newcommand{\dxhdg}{\Delta \x - H \Delta g}
+%\newcommand{\grdqk}{\nabla q(\x_k)}
+%\newcommand{\qdef}{\halb\xAx - \b^T\x}
+\newcommand{\sgn}{\text{sgn}}
+
+%15. Oktober 2013
+%Fußnoten sind am Ende der Seite
+%Fußnote ohne Strich
+%\let\footnoterule\relax
+%kein Strecken der Seite
+\raggedbottom
+%Minipage wird mit arabischen Ziffern nummeriert
+\renewcommand{\thempfootnote}{\arabic{mpfootnote} }
+%\usepackage[perpage]{footmisc} %Fußnoten zählet auf jeder Seite Neustarten.
+\usepackage{footnpag}
+%1. November 2013
+%Fuer Gauß-Elimination
+\usepackage{gauss}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+\hskip -\arraycolsep
+\let\@ifnextchar\new@ifnextchar
+\array{#1}}
+\makeatother 
+
+\newmatrix{.}{)}{nurrechts}
+\newmatrix{.}{.}{ohne}
+
+%6- November
+%fuer LR-Zerlegung
+\usepackage{blkarray}
+%PDF-Seiten einfügen
+\usepackage{pdfpages} 
+
+%22. November
+%Hintergrundbild
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{images/titel_gruen.jpg}%
+\vfill}}}
+%variabler Zeilenabstand
+\usepackage{setspace}
+
+%11. Dezember
+\newcommand{\indexf}[1]{\textbf{#1}\index{#1}}
+%\renewcommand{\indexf}[2]{\textbf{#1} \index{#2}}
+
+
+
+
+
+% Thyra
+%\makeatletter
+%\renewcommand*\bib@heading{%
+%  \section*{Literaturverzeichnis}%
+%  \@mkboth{\refname}{\refname}}
+%\makeatother
+
+
+\usepackage{bibgerm} % deutsches Literaturverzeichnis
+\bibliographystyle{geralpha} % Stil des Literaturverzeichnis
+\usepackage[square,sort,comma,numbers]{natbib}
+
+\usepackage[german,refpage,intoc]{nomencl}
+
+% Mehrere Literaturverzeichnisse
+\usepackage{multibib}
+\usepackage{etoolbox}
+
+\newcites{HJKmlpBIB}{Literaturverzeichnis}
+\newcites{HJKllpBIB}{Literaturverzeichnis}
+\newcites{TLpppBIB}{Literaturverzeichnis}
+\newcites{TLmeaBIB}{Literaturverzeichnis}
+
+%\newcites{FBKbmoBIB}{Biometric Methods for Power Plant Optimization}
+\newcites{FBKbmoBIB}{Bibliography}
+\newcites{SPopbBIB}{Literaturverzeichnis}
+\newcites{CClrbBIB}{Literaturverzeichnis}
+\newcites{ZPsoBIB}{Bibliography}
+
+
+\BeforeBeginEnvironment{thebibliography}{%
+  \let\origchapter\chapter% save the original definition of \section
+  \let\chapter\section%  make \section behave like \subsection
+}
+
+
+\AfterEndEnvironment{thebibliography}{%
+  \let\chapter\origchapter% restore the original definition of \section
+}
+
+
+% Damit auch Abschnitt x.x.x.x nummeriert wird
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% Um die geschwungenen Buchstaben u,k und w darzustellen
+\newcommand*\lateinausg{\fontfamily{wela}\selectfont}  
+
+% Zum hervorheben von Textpassagen 
+\usepackage{ulem}
+
+% Kleines Summenzeichen zur Darstellung im tiefgestellten Modus
+\def\Sum{\scalebox{0.5}{$\sum$}}
+\newcommand{\las}[1]{\large{\textsl{\lateinausg{#1}}}}
+\newcommand{\ib}[1]{\textbf{\textit{#1}}}
+
+\usepackage{nccmath} % für linksbündige Formeln  
+\usepackage{caption} % zum darstellen der unterschriften der grafiken
+
+% scaliertes Array und Matrizen
+\newcommand{\colvec}[2][.8]{%
+  \scalebox{#1}{$\begin{array}{@{}c@{}}#2\end{array}$}}%
+  
+\newcommand{\sbmatrix}[2][.8]{%
+  \scalebox{#1}{$\begin{bmatrix}{}#2\end{bmatrix}$}}%
+  
+\newcommand{\spmatrix}[2][.8]{%
+  \scalebox{#1}{$\begin{pmatrix}{}#2\end{pmatrix}$}}%
+  
+% Kurzform
+\def\V {{\mathbb V}}
+\def\B {{\mathbb B}}
+\def\M {{\mathbb M}}
+
+% Um bei Tabellen eine Doppelline zu erzeugen
+\usepackage{hhline,float} 
+
+% Farben um die Tabellen zu hinterlegen
+\colorlet{mytabgrey1}{black!10}
+\colorlet{mytabgrey2}{black!20}
+
+% Um Zeilen, Spalten und Zellen innerhalb von Tabellen einzufärben.
+\usepackage{colortbl}
+
+
+% Für das Eurosymbol
+\usepackage{eurosym}
+
+
+\usepackage[bookmarks,bookmarksnumbered=TRUE]{hyperref} % Erstellt Hyperreferenzen im PDF-Dokument
+\usepackage{tabularx}
+
+%%%% Bild Numerirung
+%\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+%\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+%%%% Tabellen Numerirung
+%\renewcommand{\thetable}{\arabic{section}.\arabic{figure}}
+%\usepackage{chngcntr}
+%\counterwithin{table}{section}
+
+%% Petrova
+\usepackage{graphicx}
+%neu von Timo
+\usepackage{epstopdf}
+
+%\textwidth 6in \textheight 9in \topmargin 0in \headsep 0in
+%\oddsidemargin 0in \evensidemargin 0in
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\address}[1]{\par\begin{center}{\sl #1} \end{center}}
+
+%\setcounter{page}{1} \textwidth 6in \textheight 9in \topmargin 0in
+%\headsep 0in \oddsidemargin 0in \evensidemargin 0in
+
+%\newcommand{\res}[1]{\Big [\!\mbox{\begin{scriptsize}${#1}$\end{scriptsize}}\!\Big ]}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\address}[1]{\par\begin{center}{\sl #1} \end{center}}
+
+%\newcommand {\R} {\textbf{\rm l\hskip-0.5mm R}}
+%\newcommand {\N} {\textbf{\rm l\hskip-0.5mm N}}
+%
+\newcommand{\bA}{\mbox {\boldmath $A$}}
+\newcommand{\bB}{\mbox {\boldmath $B$}}
+\newcommand{\bF}{\mbox {\boldmath $F$}}
+\newcommand{\bG}{\mbox {\boldmath $G$}}
+\newcommand{\bH}{\mbox {\boldmath $H$}}
+\newcommand{\bS}{\mbox {\boldmath $S$}}
+\newcommand{\bV}{\mbox {\boldmath $V$}}
+%
+\newcommand{\bPhi}{\mbox {\boldmath $\Phi $}}
+\newcommand{\bPsi}{\mbox {\boldmath $\Psi $}}
+\newcommand{\bphi}{\mbox {\boldmath $\phi $}}
+\newcommand{\bvarphi}{\mbox {\boldmath $\varphi $}}
+\newcommand{\bsigma}{\mbox {\boldmath $\sigma $}}
+\newcommand{\balpha}{\mbox {\boldmath $\alpha $}}
+\newcommand{\bbeta}{\mbox {\boldmath $\beta $}}
+\newcommand{\bxi}{\mbox {\boldmath $\xi $}}
+\newcommand{\bpsi}{\mbox {\boldmath $\psi $}}
+\newcommand{\bmu}{\mbox {\boldmath $\mu $}}
+\newcommand{\bE}{\mbox {\boldmath $E $}}
+\newcommand{\blambda}{\mbox {\boldmath $\lambda $}}
+\newcommand{\bdelta}{\mbox {\boldmath $\delta $}}
+\newcommand{\beeta}{\mbox {\boldmath $\eta $}}
+
+\newcommand {\sbsigma} {{\small \bsigma}}
+\newcommand {\sblambda } {{\small \blambda}}
+\newcommand{\bx}{\mbox {\boldmath $x$}}
+\newcommand{\by}{\mbox {\boldmath $y$}}
+\newcommand{\bz}{\mbox {\boldmath $z$}}
+\newcommand{\be}{\mbox {\boldmath $e$}}
+\newcommand{\bu}{\mbox {\boldmath $u$}}
+\newcommand{\br}{\mbox {\boldmath $r$}}
+\newcommand{\bg}{\mbox {\boldmath $g$}}
+\newcommand{\bff}{\mbox {\boldmath $f$}}
+\newcommand{\bn}{\mbox {\boldmath $n$}}
+\newcommand{\bv}{\mbox {\boldmath $v$}}
+\newcommand{\bq}{\mbox {\boldmath $q$}}
+\newcommand{\bt}{\mbox {\boldmath $t$}}
+\newcommand{\bs}{\mbox {\boldmath $s$}}
+
+\newcommand {\bb} {{\bf b}}
+\newcommand {\bc} {{\bf c}}
+\newcommand {\bd} {{\bf d}}
+\newcommand {\bk} {{\bf k}}
+\newcommand {\bw} {{\bf w}}
+\newcommand {\bh} {{\bf h}}
+

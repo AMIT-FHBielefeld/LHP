@@ -1,0 +1,36 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Das Laubharkproblem als kombinatorisches Optimierungsproblem}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Gartenmodelle}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Aufwandsberechung}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Berechnung des Harkaufwandes}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Darstellung der Harkprozesse durch Nachfolgerfunktionen}{13}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Berechnung von unproduktiven Wegezeiten}{17}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Berechnung des Transportaufwandes}{20}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Das formale Laubharkmodell}{22}{section.2.3}
+\contentsline {chapter}{\numberline {3}L\IeC {\"o}sungsstrategien f\IeC {\"u}r das Laubharkproblem}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hubbestimmung in einem Cluster}{25}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Hubzentrierung in einem Cluster}{26}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Hubausrichtung in einem Cluster}{27}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Sonderbehandlung von Leerfeldern}{27}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Konstruktionsverfahren}{28}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Zickzack-Strategien}{28}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Clusterorientiertes Konstruktionsverfahren}{30}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Huborientiertes Konstruktionsverfahren}{30}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Verbesserungsverfahren}{33}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}L\IeC {\"o}sungsverbesserung durch einfachen Nachfolgertausch innerhalb eines Clusters}{33}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}L\IeC {\"o}sungsverbesserung durch mehrfachen Nachfolgertausch innerhalb eines Clusters}{34}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}L\IeC {\"o}sungsverbesserung durch Einf\IeC {\"u}gestrategie}{34}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}L\IeC {\"o}sungsverbesserung durch Clustervereinigung}{35}{subsection.3.3.4}
+\contentsline {chapter}{Literaturverzeichnis}{37}{chapter*.14}
+\contentsline {chapter}{\numberline {A}Glossar}{39}{appendix.A}
+\contentsline {chapter}{\numberline {B}Algorithmen}{42}{appendix.B}
+\contentsline {chapter}{\numberline {C}L\IeC {\"o}sungsstrategien am Beispiel}{58}{appendix.C}
+\contentsline {section}{\numberline {C.1}Zickzack-Strategien am Beispiel}{59}{section.C.1}
+\contentsline {subsection}{\numberline {C.1.1}Einfache Zickzack-Strategie}{59}{subsection.C.1.1}
+\contentsline {subsection}{\numberline {C.1.2}Unterteilte Zickzack-Strategie}{60}{subsection.C.1.2}
+\contentsline {section}{\numberline {C.2}Clusterorientiertes Konstruktionsverfahren am Beispiel}{62}{section.C.2}
+\contentsline {section}{\numberline {C.3}Huborientiertes Konstruktionsverfahren am Beispiel}{63}{section.C.3}
+\contentsline {subsection}{\numberline {C.3.1}Huborientiertes Konstruktionsverfahren via Tiefensuche}{63}{subsection.C.3.1}
+\contentsline {subsection}{\numberline {C.3.2}Huborientiertes Konstruktionsverfahren via Breitensuche}{66}{subsection.C.3.2}
+\contentsline {section}{\numberline {C.4}Abschlie\IeC {\ss }ende Erl\IeC {\"a}uterungen zu den Beispielrechnungen}{66}{section.C.4}

@@ -1,0 +1,185 @@
+\documentclass[fontsize=12pt,doubleside,openany,listof=totoc,listof=flat,listof=nochaptergap,numbers=noenddot]{article}
+
+
+% Zum Ändern der Schriftart
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage{cmbright} % Serifenlose Schrift
+\setlength\emergencystretch{1em} % zulässigen Wortzwischenraum erhöhen
+% somit ragen keine Wörter oder Formeln in den rechten Rand
+
+\author{Hermann-Josef Kruse}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{eurosym}
+%\usepackage{romannum} 
+%\usepackage{multirow}
+%\usepackage{rotating}
+%\usepackage{lmodern}
+
+\usepackage{pdfpages}
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+%\usepackage[hyphens]{url} %Umbruch url
+\usepackage{paralist} 
+
+\usepackage{geometry} % zum Einstellen der Seitenränder 
+\geometry{verbose,a4paper,
+tmargin=25mm,bmargin=25mm,
+lmargin=25mm,rmargin=25mm,includefoot}
+
+\usepackage{setspace} % Zeilenabstand
+\onehalfspacing % auf 1,5 erhöhen
+
+\usepackage[bottom,hang]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+%\usepackage{graphicx}
+%\usepackage{epstopdf}
+ \usepackage[abs]{overpic}
+
+%\usepackage{xcolor}
+%\usepackage{color}
+%\usepackage{colortbl}
+
+%\usepackage{blindtext}
+
+	\parindent0cm 
+% Hurenkinder und Schusterjungen verhindern
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+%\usepackage[normalem]{ulem}
+%\usepackage{wrapfig}
+\usepackage{picins}
+
+
+
+
+\begin{document}
+
+\textbf{Theoretische Grundlagen zur allgemeinen Laubharkproblematik}\\
+\textbf{Hermann-Josef Kruse}\\
+
+\noindent Die mathematische Modellierung eines Laubharkproblems soll hier auf seinen formalen Kern zusammengefasst werden.
+\\ \\
+Gegeben sei ein kanten- und knotenbewerteter Graph $G= [V,E,c,M]$ mit der Knotenmenge $V$, der Kantenmenge $E$, der Kantenbewertungsfunktion $c:E \to \mathbb{R}_\geq$ und der Knotenbewertungsfunktion $M:V \to \mathbb{R}_\geq$. \\
+\\
+Eine Abbildung $s:V \to V$ heißt \textit{Nachfolgerfunktion} von $G$, wenn die folgenden Bedingungen erfüllt sind\footnote{Man beachte, dass die Voraussetzung, dass $s$ eine Abbildung ist, die Eindeutigkeit der Nachfolgerschaft impliziert, d.h. jeder Knoten $a \in V$ besitzt bzgl. $s$ genau einen Nachfolger in $V$, ggf. sich selbst: $s(a)=a$.}:
+\begin{compactenum}[(1)]
+\item Für alle $a \in V$ gilt: $s(a) \neq a \Rightarrow [a,s(a)] \in E$ (\glqq \textit{Nachbarschaftsbedingung}\grqq{}). 
+\item Der durch $s$ induzierte Digraph $\vec{G}_s=\langle V, \vec{E}_s \rangle$ mit $\vec{E}_s=\{\langle a,s(a)\rangle \mid a \in V \wedge a \neq s(a)\}$ ist zyklenfrei. \\
+\end{compactenum}
+Die Menge aller Senken in $\vec{G}_s$ werde mit $Hub(G,s)$ und die Menge aller Quellen in $\vec{G}_s$ mit $Q(G,s)$ bezeichnet.\\
+\\
+Zu jedem $a \in V$ ist bzgl. $\vec{G}_s$ die \textit{Erreichbarkeitsmenge}\label{Erreichbarkeitsmenge_2} $R(a)$ definiert, d.h. die Menge aller Knoten $i \in V$, von denen aus der Knoten $a$ über eine Pfeilfolge in $\vec{G}_s$ erreichbar ist; dabei werde $a \in R(a)$ vereinbart. Die Erreichbarkeitsmengen der Senken in $\vec{G}_s$ werden auch \textit{Cluster}\label{Cluster} genannt und mit $C(h)$ für $h \in Hub(G,s)$ bezeichnet. Zudem wird die Abbildung $M^*_s:V \to \mathbb{R}_\geq$ durch $M^*_s(a) := \sum\limits_{k \in R(a)}M(k)$ definiert; sie wird die durch $s$ induzierte \textit{Anhäufungsfunktion}\label{Anhäufungsfunktion_2} genannt. \\
+\\
+Die Menge aller Nachfolgerfunktionen von $G$ werde mit $\Lambda(G)$\label{Lambda} bezeichnet. Durch eine \textit{Kostenfunktion}\label{Kostenfunktion} $K:\Lambda(G) \to \mathbb{R}_\geq$ werden jeder Nachfolgerfunktion $s$ von $G$ nichtnegative Kosten zugewiesen. Dann wird das Optimierungsproblem in der Form 
+\begin{equation*}
+\min\limits_{s \in \Lambda(G)} K(s)
+\label{definition_Laubharkproblem}
+\end{equation*} 
+
+\noindent ein \textit{Laubharkproblem} genannt. Dabei wird eine kostenminimale Nachfolgerfunktion $s$ von $G$ gesucht.\\
+\\
+Mit der Abbildung $\overline{M}:V \to \mathbb{R}_\geq$ werde eine \textit{Kapazitätsfunktion} eingeführt. Im einfachsten Fall gilt: $\overline{M}(a)=\overline{M} \in \mathbb{R}_>$ für alle $a \in V$. Eine Nachfolgerfunktion $s$ heißt \textit{zulässig} bzgl. $\overline{M}$, wenn für alle Knoten $a \in V$ gilt: $M^*_s(a) \leq \overline{M}(a)$. Dann wird das Optimierungsproblem in der Form 
+\begin{align*}
+\begin{split}
+&\min\limits_{s \in \Lambda(G)} K(s)\\ &u.d.N. \\ &M^*_s(a) \leq \overline{M}(a) \text{ für alle } a \in V
+\label{definition_kapazitiertes_Laubharkproblem}
+\end{split}
+\end{align*} 
+
+\noindent ein \textit{kapazitiertes Laubharkproblem} genannt. Dabei wird eine kostenminimale zulässige Nachfolgerfunktion $s$ von $G$ gesucht.\\
+\\
+Die obige Nebenbedingung kann im Falle einer konstanten Kapazitätsfunktion (d.h. $\overline{M}(a)=\overline{M} \in \mathbb{R}_>$ für alle $a \in V$) auch allein für die Senken $h \in Hub(G,s)$ gefordert werden, ohne dass sich dadurch eine wesentliche Änderung ergibt. \\
+\\
+Für praktische Laubharkprobleme bietet sich eine Reihe von Kosten- bzw. Aufwandsmodellen an. Im Folgenden wird eine Aufteilung in drei additive Kostenanteile vorgeschlagen: 
+\begin{equation*}
+K(s) = HA_{\Sigma}(s) + UW_{\Sigma}(s) + TA_{\Sigma}(s),
+\label{definition_Kostenfunktion}
+\end{equation*} 
+wobei mit $HA_{\Sigma}(s)$ der Aufwand des reinen Harkprozesses, mit $UW_{\Sigma}(s)$ der Aufwand für unproduktive Wege im Verlauf des Harkprozesses und mit $TA_{\Sigma}(s)$ der Aufwand für das Abtransportieren der zusammengeharkten Laubmengen von den Laubhaufen (Hubs) zum Kompost bewertet wird. \\
+\\
+\underline{Zum Harkaufwand}:\\
+Zu gegebener (zulässiger) Nachfolgerfunktion $s$ eines Graphen $G=[V,E]$ wird die Anhäufungsfunktion $M^*_s$ ermittelt. Danach wird zu jedem Nicht-Hub $a \in V\setminus Hub(G,s)$ der Harkaufwand $HA(a,s(a))$ gemäß der folgenden  Harkaufwandsformel bestimmt: 
+\begin{align*}
+HA(a,b) = \Big\lceil \frac{M^*(a)}{M_k} \Big\rceil \cdot \alpha_H(a,b).
+\end{align*}
+Dabei ist $M_k$ die \textit{maximale Laubmenge}, die von einem Feld zu einem Nachbarfeld in einem Harkzug bewegt werden kann\footnote{Demnach gibt der aufgerundete Quotient die Anzahl der Harkzüge an, welche benötigt werden, um die aktuelle Laubmenge aus Feld $a$ ins Nachbarfeld $b$ zu harken. Der Einfachheit halber wird unterstellt, dass die maximale Laubmenge $M_k$ konstant ist; andernfalls müssten variable Schranken $M_k(a,b)$ eingeführt werden.}, und $\alpha_H(a,b)$ ein Harkaufwandsfaktor für das Harken von Feld $a$ zum Nachbarfeld $b$ (in vereinfachter Form: $\alpha_H(a,b) = \alpha_H$ für alle $[a,b] \in E$). 
+Abschließend werden die Einzelaufwände aufsummiert: 
+\begin{align*}
+HA_{\Sigma}(s) = \sum_{a \in V\setminus Hub(G,s)}{HA(a,s(a))}. \label{Formel_Harkaufwandsumme}
+\end{align*}
+
+\underline{Zum Aufwand für unproduktive Wege}:\\
+Unproduktive Wege entstehen, wenn der Harkprozess in einem Feld $a$ unterbrochen und ein unproduktiver Weg zur nächstgelegenen Quelle $q \in Q(G,s)$ entsteht, von wo der Harkprozess fortgesetzt wird: $q \in Q(s) \text{ mit } d_{aq} = \min\{d_{aj} \mid j \in Q(s)\}.$ Die einzelnen unproduktiven Weglängen werden aufsummiert und mit einem Wegefaktor $\alpha_W$ gewichtet:
+\begin{align*}
+WA_{\Sigma}(s) =\alpha_W \cdot \sum_{i=1}^{Q} d_{a_{i-1},q_i}.
+\end{align*}	
+
+
+
+\underline{Zum Transportaufwand}:\\
+Hierbei spielen zurückzulegende Transportwege zwischen den Hubs und dem Kompostfeld\label{Kompostfeld} $K$ die entscheidende Rolle.\footnote{Zur Einbeziehung des Kompostfeldes in das Graphenmodell gibt es grundsätzlich zwei Möglichkeiten: Das Kompostfeld ist ein bestimmter Knoten des Graphen ($K \in V$) oder ein zusätzlicher Knoten ($V^* = V\cup \{K\}$), allerdings jeweils mit hinreichend großer Aufnahmekapazität ($\overline{M}(K)=\infty$). Im Folgenden wird o.B.d.A. die erste Möglichkeit verfolgt.} Ausgehend von einer Nachfolgerfunktion $s$ sei die Hubmenge $Hub(G,s)$ ermittelt und ein Kompostfeld $K \in V$ vorgegeben. Die Entfernungen zwischen allen Hubs $h \in Hub(G,s)$ untereinander und zum Kompostfeld $K$ liegen in einer Teilmatrix $D^*=(d^*_{hk})_{h,k \in Hub(G,s)\cup \{K\}}$ der Entfernungsmatrix $D=(d_{ij})_{i,j \in V}$ vor. Alle Entfernungen haben die Dimension [LE] (Längeneinheit).\\
+\\
+Der Transportaufwand ließe sich dann proportional zu den zurückgelegten Weglängen bestimmen. Bei einer Pendeltour zwischen dem Kompostfeld $K$ und einem Hub $h$ ergibt sich im einfachsten Fall der Transportaufwand
+\begin{align*}
+TA(h) = 2 \cdot d^*_{h,K} \cdot \alpha_T,
+\end{align*}		
+wobei $\alpha_T$ als \textit{Transportaufwandsfaktor}\label{Transportaufwandsfaktor} oder kurz als \textit{Transportparameter} bezeichnet werden soll. Der Faktor $\alpha_T$ hat in diesem Fall die Dimension [ZE/LE], sodass sich für den Transportaufwand $TA(h)$ die Dimension [ZE] ergibt.
+\\ \\
+Allerdings können auch noch zusätzliche Aufwände eingerechnet werden, etwa die von der Laubmenge abhängige Auflade- und Abladezeit (\textit{variabler Ladeaufwand}\label{variabler Ladeaufwand}) oder ein fixer Zeitaufwand (etwa für das Vorbereiten zum Aufladen oder zum Abladen), welcher unabhängig von der Entfernung und der Laubmenge ist (\textit{fixer Ladeaufwand}\label{fixer Ladeaufwand}): 
+\begin{align*}
+TA(h) = 2 \cdot d^*_{h,K} \cdot \alpha_T + \gamma \cdot M^*_s(h) + \sigma.
+\end{align*}
+
+Hierbei geht der Parameter $\gamma$ in den variablen Aufwandsanteil für das jeweilige Auf- und Abladen der Laubmenge $M^*(h)$ ein und hat die Dimension [ZE/ME], während die Konstante $\sigma$ für den fixen Aufwandsanteil steht und die Dimension [ZE] hat.\footnote{Eine Abhängigkeit der Parameter $\gamma$ und $\sigma$ von den Hubfeldern $h$ als mögliche Verallgemeinerung, also $\gamma(h)$ und $\sigma(h)$, wird hier nicht weiter betrachtet. Es sei allerdings darauf hingewiesen, dass bei der späteren Aufsummierung der einzelnen Transportaufwände $TA(s)$ über alle Hubs ein konstanter Parameter $\gamma$ keinen maßgeblichen Einfluss auf die Lösungsgüte einer Harkstrategie (bzw. der dadurch erzeugten Nachfolgerfunktion $s$) ausübt, wohl aber ein konstanter Parameter $\sigma$, da die Anzahl der durch $s$ induzierten Hubs hierbei eine Rolle spielt.}
+\\ \\
+Bislang wird unterstellt, dass die gesamte Laubmenge $M^*(h)$, die vom Hub $h$ 
+abgeholt wird, auch komplett vom Transportmittel (Laubwagen oder Schubkarre) aufgenommen 
+werden kann. Allerdings kann es vorkommen, dass die vom Hub $h$ 
+abzuholende Laubmenge das \textit{maximale Ladevolumen}\label{Ladevolumen}
+$\overline{T}$ der Schubkarre überschreitet. In diesem Falle sind mehrere
+Pendeltouren nötig, um das Hub $h$ vom Laubhaufen zu befreien. Entsprechend
+ändert sich der Transportaufwand für die Laubentsorgung des Haufenfeldes $h$:
+
+\begin{align*}
+TA(h) = \Big\lceil \frac{M^*_s(h)}{\overline{T}} \Big\rceil \cdot 2 \cdot d^*_{h,K} \cdot \alpha_T
+\end{align*}
+bzw. 
+\begin{align*}
+TA(h) = \Big\lceil \frac{M^*_s(h)}{\overline{T}} \Big\rceil  \cdot 2 \cdot d^*_{h,K} \cdot \alpha_T +
+\gamma \cdot M^*_s(h) + \Big\lceil \frac{M^*_s(h)}{\overline{T}} \Big\rceil \cdot \sigma.
+\end{align*}
+
+\noindent Liegen mehrere Laubhaufen zum Abholen bereit, ergibt sich der gesamte 
+Transportaufwand als die Summe aller Pendeltouren zu allen Hubs (bzgl. Nachfolgerfunktion $s$):
+\begin{align*}
+TA_\Sigma(s) = \sum_{h \in Hub(G,s)} TA(h).
+\end{align*}
+
+Etwas komplizierter wird die Transportaufwandsberechnung dann, wenn zusätzlich zu den Pendeltouren auch Sammeltouren in Frage kommen. Dies hat allerdings nur dann einen Sinn, wenn die auf einer Sammeltour angefahrenen Hubs in ihrer Laubmengensumme das maximale Ladevolumen $\overline{T}$ nicht überschreiten. Im Folgenden wird also davon
+ausgegangen, dass nur Sammeltouren $K \rightarrow h_1 \rightarrow h_2 \rightarrow \ldots \rightarrow h_P \rightarrow K$ betrachtet werden, für die gilt:
+\begin{align*}
+\sum_{p=1,\ldots,P-1}{M^{**}_s(h_p)}< \overline{T},
+\end{align*}
+wobei mit $M^{**}_s(h_p)$ die nach entsprechend vielen Pendeltouren verbleibende Laubrestmenge\label{Laubrestmenge} beim Hub $h_p$ gemeint ist. Hiermit wird sichergestellt, dass bei Weiterfahrt zum nächsten Hub noch Aufladekapazität in der Schubkarre vorhanden ist. Allerdings wird offen gelassen, ob der letzte Laubhaufen komplett aufgeladen werden kann 
+oder nur ein Teil der Laubmenge $M^{**}_s(h_P)$ auf der Schubkarre Platz findet. Dann ergibt sich der Transportaufwand für diese Sammeltour im einfachen Fall zu
+\begin{align*}
+TA(h_1,\ldots,h_P)=\alpha_T \cdot 
+[d^*_{K,h_1} + d^*_{h_P,K}+\sum_{p=2,\dots,P} d^*_{h_{p-1},h_p}].
+\end{align*}
+Auf weitere Verfeinerungen soll hier verzichtet werden.\\
+
+
+\end{document}
+
+

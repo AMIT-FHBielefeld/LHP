@@ -1,0 +1,3 @@
+# We don't want to upload .mat files to gitlab, that's not what it's meant for.
+# Prefer cloud/netdrive transfer for .mat files instead.
+*.mat

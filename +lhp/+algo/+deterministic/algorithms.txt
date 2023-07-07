@@ -1,0 +1,60 @@
+# Diese Datei listet in einem fuer MATLAB lesbare Format alle Heuristiken auf,
+# die im LHT implementiert sind. Diese Datei wird im Zusammenhang mit der
+# "gather()" Methode der Klasse LHT_HeuristicData verwendet und bietet dem
+# Nutzer mehr Komfort beim erzeugen der LHT_HeuristicData Klassen fuer alle hier
+# genannten Algorithmen. Fuer weitere Informationen wird auf die Dokumentation
+# der Methode "gather()" verwiesen.
+# 
+#
+# Folgendes ist zu beachten:
+# - Zeilen mit '#' am Anfang sind Kommentare.
+# - Ein "-" im Namen wird an geeigneten Stellen (Plots) durch ein
+#   Leerzeichen " " ersetzt. 
+# - Ein "_" im Namen wird an geeigneten Stellen (Plots) durch ein Latex-
+#   konformes "_{...}" bis zum naechsten "-" ersetzt.
+#
+# ID, funktionshandle, Name der Funktion (In Tabelle, Plots, etc.)
+5, zickzack, Zickzack
+#
+# Sukzessive Clusterverfahren nach Hermann
+#
+6, sucClust_LMmax_FIFO_KPmin, SucC-LM_max-FIFO-KP_min
+7, sucClust_LMmax_FIFO_LMmax, SucC-LM_max-FIFO-LM_max
+8, sucClust_LMmax_FIFO_NW, SucC-LM_max-FIFO-NW
+9, sucClust_LMmax_LIFO_KPmin, SucC-LM_max-LIFO-KP_min
+10, sucClust_LMmax_LIFO_LMmax, SucC-LM_max-LIFO-LM_max
+11, sucClust_LMmax_LIFO_NW, SucC-LM_max-LIFO-NW
+12, sucClust_LMmin_FIFO_KPmin, SucC-LM_min-FIFO-KP_min
+13, sucClust_LMmin_FIFO_LMmax, SucC-LM_min-FIFO-LM_max
+14, sucClust_LMmin_FIFO_NW, SucC-LM_min-FIFO-NW
+15, sucClust_LMmin_LIFO_KPmin, SucC-LM_min-LIFO-KP_min
+16, sucClust_LMmin_LIFO_LMmax, SucC-LM_min-LIFO-LM_max
+17, sucClust_LMmin_LIFO_NW, SucC-LM_min-LIFO-NW
+18, sucClust_NW_FIFO_KPmin, SucC-NW-FIFO-KP_min
+19, sucClust_NW_FIFO_LMmax, SucC-NW-FIFO-LM_max
+20, sucClust_NW_FIFO_NW, SucC-NW-FIFO-NW
+21, sucClust_NW_LIFO_KPmin, SucC-NW-LIFO-KP_min
+22, sucClust_NW_LIFO_LMmax, SucC-NW-LIFO-LM_max
+23, sucClust_NW_LIFO_NW, SucC-NW-LIFO-NW
+#
+# Simultane Clusterverfahren nach Hermann 
+#
+24, simClust_NW_NW_Impl, SimC-NW-NW-Impl
+28, simClust_NW_LMmax_Impl, SimC-NW-LM_max-Impl
+32, simClust_NW_LMmin_Impl, SimC-NW-LM_min-Impl
+36, simClust_NW_KPmin_Impl, SimC-NW-KP_min-Impl
+40, simClust_LMmax_NW_Impl, SimC-LM_max-NW-Impl
+44, simClust_LMmax_LMmax_Impl, SimC-LM_max-LM_max-Impl
+48, simClust_LMmax_LMmin_Impl, SimC-LM_max-LM_min-Impl
+52, simClust_LMmax_KPmin_Impl, SimC-LM_max-KP_min-Impl
+56, simClust_LMmin_NW_Impl, SimC-LM_min-NW-Impl
+60, simClust_LMmin_LMmax_Impl, SimC-LM_min-LM_max-Impl
+64, simClust_LMmin_LMmin_Impl, SimC-LM_min-LM_min-Impl
+68, simClust_LMmin_KPmin_Impl, SimC-LM_min-KP_min-Impl
+72, simClust_KPmin_NW_Impl, SimC-KP_min-NW-Impl
+76, simClust_KPmin_LMmax_Impl, SimC-KP_min-LM_max-Impl
+80, simClust_KPmin_LMmin_Impl, SimC-KP_min-LM_min-Impl
+84, simClust_KPmin_KPmin_Impl, SimC-KP_min-KP_min-Impl
+#
+# Neue IDs ab 88 vergeben!
+#
