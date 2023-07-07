@@ -52,12 +52,12 @@ Eine Einführung in das Arbeiten mit dem Code des Laubharkprojekts gibt die
 [Projektarbeit von Andreas Hartmann][10] ([PDF Version][11]).
 
 Weiterführende Anwendungen befinden sich im
-[testScript.mlx](LHP/testScript.mlx).
+[testScript.mlx](testScript.mlx).
 
 
 ## Struktur
 
-Die Quellcodes befinden sich im Unterordner [LHP](LHP/). Literatur rund um das
+Die Quellcodes befinden sich im Ordner [LHP](/). Literatur rund um das
 Laubharkprojekt befindet sich im Ordner [Literatur](Literatur/).
 
 
