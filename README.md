@@ -69,5 +69,5 @@ Laubharkprojekt befindet sich im Ordner [Literatur](Literatur/).
 ## Lizenz
 
 lhp ist open-source software verfügbar unter the GNU General Public License v3 
-(GPL-3) auf: https://github.com/AMIT-HSBI/lhp
+(GPL-3) auf: https://github.com/AMIT-HSBI/LHP
 
