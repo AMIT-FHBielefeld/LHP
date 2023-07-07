@@ -30,8 +30,8 @@ Manuskript von Hermann-Josef Kruse verwiesen [1].
 
 ## Veröffentlichung zu diesem Projekt
 
-`Deterministische und bionische Heuristiken zur Lösung von Entsorgungsproblemen
- - Am Beispiel des Laubharkproblems` von Karim Abdelhak, Bernhard Bachmann,  
+Deterministische und bionische Heuristiken zur Lösung von Entsorgungsproblemen
+ "-" Am Beispiel des Laubharkproblems von Karim Abdelhak, Bernhard Bachmann,  
  Ralf Derdau, Andreas Hartmann und Hermann-Josef Kruse, lizenziert 
  unter CC BY-SA 4.0 International Public License.
  ISSN: 2196-6192
